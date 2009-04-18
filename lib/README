@@ -1,0 +1,9 @@
+As of release v1.0, agr is using the memcpy function without furnishing headers
+to compile it, this patch is here to solve this problem
+
+The agr release available here is already patched !!!
+
+
+To patch an original distro of AGR, 
+cd agr
+cat ../agr-memcpy.patch | patch -p1

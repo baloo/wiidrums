@@ -1,0 +1,13 @@
+diff -u -r agr-origin/include/Movement.h agr/include/Movement.h
+--- agr-origin/include/Movement.h	2009-04-18 16:34:21.000000000 +0200
++++ agr/include/Movement.h	2009-04-18 16:35:22.000000000 +0200
+@@ -8,6 +8,9 @@
+ #ifndef _MOVEMENT_H_
+ #define _MOVEMENT_H_
+ 
++// Resolves problem with the memcpy not defined error
++#include <string.h>
++
+ // std::vector only used in cMovement::initialise( const std::vector<cVector3int>& )
+ // May be remove if not needed
+ 

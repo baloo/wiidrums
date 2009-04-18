@@ -1,0 +1,343 @@
+***** Change log ***** 
+
+- 4/01/08
+Start of dev change log
+Start of test4, using test3 base
+Changed movement detection algo, using differences between two inputs and gravity lookalike
+Start creating buttons
+
+- 5/01/08
+Create list, button works to add and select
+Display selected movement
+Move accelerometer update to the idle function
+
+- 6/01/08
+Clustering done \o/
+
+- 14/01/08
+start test 5, from test 4
+Cleaning and starting HMM
+Initialisation almost done, "B" part of the hmm initialisation in progress
+
+- 15/01/08
+Separate clustering into his own function
+Separate vector normalisation into his own function
+Initialisation done
+Start of forward algorithm
+
+- 16/01/08
+Forward done, result not so good (touch P for selection, L for last movement )
+Export HMM in a file (touch E)
+
+- 24/01/08
+BaumWelch code done (touch B)
+Display clustered results and forward probability
+Kmean function "optimised" to not fail in a local maximum
+
+- 25/01/08
+Broke bluetooth device, bought new one -_-
+Start test6, for testing curent HMM implementation keeping the original test5 as backup 
+
+- 26/01/08
+Add save/load movement (touch W and X)
+Display curent probability
+Add scrolling
+Done some test for values
+
+- 27/01/08
+Check HMM code
+
+- 28/01/08
+Modify BaumWelch algo to use all observation vectors and average them. 
+
+- 29/01/08
+Start of test7 from test6
+Creation of the OO library, by creating some files
+
+- 9/02/08
+Interim Report almost done, back to real work!
+cVector3Int, cMovement, cVocablary, cHMM, cClustering, cKmeansClustering classes declared
+Use of doxygen comments
+Implementation : 
+  cVector3int and cMovement almost done (some extra feature may be added later, see TODOs)
+  cVocabulary in progress, along with cClustering and cKmeansClustering
+  
+- 10/02/08
+cVocabulary, cClustering and cKmeansClustering done and tested
+Creation of the cGestureRecogniser class
+Doxygen doc created
+
+- 13/02/08
+cHMM started
+initialisation, clustering and forward algorithm done
+Crash when deleting the m_B arrays (only from the 6th ! o_O), need to find out why
+
+- 14/02/08
+Finish Interim Report \o/
+
+- 15/02/08 
+Crash detected and fixed (due to a shared clustering object between the vocabulary and the HMM)
+BaumWelch implemented and tested (only if not crashed and acceptable results)
+
+- 17/02/08
+Start of test8 : cleaned verion of the classes of test7 (keept as backup)
+Use the term movement for cMovementObject, using the term observation only for clusterised movement
+Use the term array instead of buffer in function input parametres for more clarity.
+Use of const reference instead of const pointers when sending an object, but keep pointer when not const
+Use the term xxxArray and ptXxxx for input variable when they represent an array or a pointer
+Use a clear() function, instead of using only the destructor (the destructor calls clear())
+Use const as much as possible
+  => i.e. : foo( const cClass& wontChangeObj ) and foo( cClass* willChangeObj );
+cMovement::changeVectorSize() (re)initialise automaticaly the output buffer if needed
+Change function name cHMM::clusteriseStates() to cHMM::createHMM()
+Change function name cHMM::computeObservationCluster() to cHMM::computeObservationSequence()
+Comment all function inputs and return values, Doxygen style
+Declaration of the cGestureRecogniser class completed (but will certainly be updated during its implementation)
+Start cGestureRecogniser implementation
+
+- 18/02/08
+Found the name of the greek character : Xi
+Wrote some cGestureRecogniser function
+
+- 19/02/08
+Continue cGestureRecogniser implementation
+Add a two functions to cHMM : 
+  copy(), used to copy another cHMM object into another one
+  isReady(), to check if a cHMM is ready to be used
+Some parameter for the cHMM will be needed : 
+  its normalised size to be used for recognition. Even if data member, it is not automaticaly used
+  the data needed for the Bayes classifier
+  
+- 21/02/08
+Add the copy() and isReady() function to the cVocabulary class
+Add a function for copying the Clustering object (returning the expected child class)
+cVocabulary copy the clustering object instead of storing its pointer.
+cGestureRecogniser vocabulary and gesture management code writen
+Start writing movement recognition code : it should be better if this is handled by an external class
+Add load/save function into cHMM and cVocabulary, need to think how it will be done (ASCII (XML?) and binary format)
+Implement saveGesture, loadVocabulary and saveVocabulary in cGestureRecogniser.
+Problem with loadGesture : how to make the connection with the Vocabulary? Maybe add the vocabulary id as parameter.
+Project Roadmap
+
+- 23/02/08
+Vocabulary and HMM read/write function in ASCII mode added
+
+- 24/02/08
+cHMM::assignVocabulary() added for assigning vocabulary when loading from a file
+Read/write tested
+Fix cHMM copy function
+Protected read/write ASCII/binary funstions receive the fstream object instead of the file name
+Change the cGestureRecogniser::addGesture() to optionaly specify the vocabulary ID
+Implement loadGesture in cGestureRecogniser, sending the vocabulary ID as parameter
+
+- 25/02/08
+Add some missing doxygen comments
+Add copy constructors for serval classes, and overloaded operators for cVector3int
+Implement some cGestureRecogniser gesture recognition function : need more investigation on Baye classification to go further
+Roadmap v0.8 completed on time \o/
+Start v0.9
+Investigation on Baye classification, CPPUnit and the new organisation of the project files
+
+- 27/02/08
+Change the file repesitory hierarchie.
+Separate changelog and roadmap into differents files
+Decide that the application will be available as a librairy
+
+- 28/02/08
+Try to put the prototype working using the new architecture:
+ - Change file hierarchie (Ogre3D-like)
+ - Change the project settings (includes directory, outputs directories)
+ - Had to remove the precompiled error (or could not compile)
+ - Then compile well, but error with the ressources ( error RC2104 : undefined keyword or key name: IDR_MAINFRAME )
+Create the project for building the library (now lib is exported as AGR.lib and AGR_d.lib)
+Doxygen script file changed, generating a script with Doxywizard and tuning the script by hand.
+Create the sample application project and start implementing it
+Create the testing framework
+Implementing test units for:
+ - cVector3int
+ - cMovement
+Some problems already found and fixed because of the tests (Proving the usefullness of unit testing!)
+But some has been found but not fixed yet, in cMovement::changeVectorSize
+ - The function is not as accurate as expected (a /todo document it)
+ - A problem in Release showed a delay in the assignement in the unit test, and was fixed by changing the
+  optimisation setting, removing the floating point consistancy optimisation (No idea what this setting does,
+  need to investigate what it does) from the library release compilation.
+ - The function doesn't return the same values for Debug and Release, being more is more accurate in Release.
+
+- 01/03/08
+UnitTest now also use the standard output (now, need to specify -xml to use the Xml outputer)
+Fix the protype problem (putting Ressource.h in the script folder), add its project to the solution
+Clustering units tests :
+ - Kmeans clustering stops when no changes are made, which could be still far from optimal result
+   Now it continues for an extra 10 loops when reaching a good result
+   The test for this tolerance fails sometimes, mainly to the random values
+Vocabulary units tests :
+ - Link error when using cVocabulary: it seems that the symboles of iostreams are also stored in the library, which is a problem. 
+   This problem is also present in the prototype when using the lib file instead of the source code.
+   In order to avoid that, the test (and the prototype) will use temporarly the source code instead of the .lib
+Start HMM unit tests
+Fix issues found by tests (except those described before)
+
+- 02/03/08
+Continue HMM test
+ - The BaumWelch result need to be kept only if they improve the result
+Start GestureRecogniser tests
+ - Initialisation, gesture and vocabulary manipulation
+In GestureRecogniser.h, add "typedef cHMM cGesture;" for more clarety
+Also used everywhere in GestureRecogniser.cpp, it is better to use this name when manipulating an HMM as a gesture. 
+Few bug fixes
+
+- 03/03/08
+Continue GestureRecogniser tests
+ - Gesture recogniser manipulation test added, but other tests will be added when the Bayes classification will be added
+Add operator == and != for cVector3int (along with their unit tests)
+In KmeansClustering, add a kmeans loop exit when the mean point doesn't change between two iterations
+Change warning level in the library project from /W3(default) to /W4 (highest), and treat warnings as errors (/WX)
+Fix a few newly found warnings
+Write movement recognition class (cMovementRecogniser)
+Start cMovementRecogniser tests
+ - uninitialised, initialisation, manual recognition() tested and fixed
+
+- 04/03/08
+Add cMovementRecogniser automatic recognition test, with related bug fix
+I need to use cMovementRecogniser within the prototype for checking its effectiveness
+Removed old movement recognition code from cGestureRecogniser, add a public cGestureRecogniser object
+
+- 05/03/08
+Use cGestureRecogniser in the prototype (for tests)
+Strange error when sending the movement pointer for getting the movement recognised. 
+Add the issue section in the change log
+cGestureRecogniser implementation finished : change #define USE_OLD_CODE to 1 for using the previous code
+
+- 06/03/08
+Add the project into Perforce (a limited version)
+Bind the visual studio project with Perforce
+Use the average vector size of observations vectors for HMM's observations sizes :
+ - Change cClustering::createNormalisedVectors to return this value
+ - Add the value as member of cHMM, save and manipulates it
+ - Update TestUnits accordingly, solves issues
+Fix issue with the library link by set the library setting for the runtime library to Multithreaded DLL (/DL) (and accordingly for the debug version)
+Seems that the issue #2 from 05/03/08 is solved when using the lib version... 
+
+- 07/03/08
+Add the method for deciding whether or not a gesture is recognised
+ - Add to the HMM class the neccessary information : mean and variance.
+ - Add forward version for an already clusterised observation: modify "normal" forward function to use the new one once the clusterised observation created
+ - Add the computeMeanVariance() function, and call it from createHMM() and from BaumWelchClusterised()
+ - Probability manipulated by cGestureRecogniser are weighed by their size
+Change the test clustering test for avoiding to have the test failing randomly, being also more relevant to the AGR project
+Start implementing the sample application:
+ - The main structure is created (menus)
+ - Only works for the moment with movements loaded from a file (no wiimote support)
+
+- 08/03/08
+Remove unnecessary todos
+Add a note explaining the behavour of cMovement::changeVectorSize()
+Add the vocabulary size in the cHMM class for checking coherence with the actual vocabulary object size
+Roadmap v0.9 completed \o/
+Start writing makefiles
+
+- 09/03/08
+Try to write makefile with the test unit, addapting the files for avoiding warnings
+
+- 10/03/08
+Finally manage to build the test unit, addapting a few file (especially add the empty namespace for friend test classes (like "friend class ::cTestClass;")
+One unit test failed (BaumWelchAlgorithm), I had some fun on gdb but not yet solved the issue
+
+- 11/03/08
+Change the gesture recognition decision process: move it in his own function cGestureRecogniser::isRecognised()
+Along with the mean/variance decision making, an empirical value has been added (giving better results than the "clever" one )
+Fix a bug in the HMM's backward function, certainly the cause of the problem in linux
+Binary format save/load for vocabulary/HMM/GR
+Roadmap 0.10 completed one week in advance ! \o/
+
+- 12/03/08
+Stephen provide my a Sixaxis, do some investigation on that
+The accelerometer scale need to be change to be more standard. 
+
+- 13/03/08
+Makefile change, put inside the script directory
+Add the package make command (but not finished yet)
+
+- 15/03/08
+Design ideas for the windows application on paper
+
+- 17/03/08
+Add gestures and vocabulary names in cGestureRecogniser, whith the methods for manipulating them
+
+- 26/03/08
+After a short break for working on other academic project, I'm back to work!
+Creation of the GestureCreator sample, aiming to helps the creation of GestureRecogniser files (but MFC, therefore windows only)
+
+- 27/03/08
+Start implementation of the GestureCreator structure (wiimote, splitview, the 4 views...
+Fix a little memory leak due to the gesture/vocabulary name buffers
+
+- 28/03/08
+Add gesture creation code
+Add GR findXXXbyName functions
+Improved manipulation
+Save/load
+Display movement info/gesture recognition
+
+- 29/03/08
+Add some GestureCreator functionalities
+Ad to cGestureRecogniser a resize function (along with unit tests)
+
+- 30/03/08
+Continue some work on GestureCreator
+Change how the observation size is calculated : 1.5 times the average movement size instead of 2
+Roadmap 1.0 completed, the release candidate is ready.
+
+
+
+***** TODO *****
+Change system to use another range than the wii one
+Add a GR resize function
+HMM : BaumWelch : keep only if result improve
+Use cVector3float instead of cVector3int ?
+Update wiiuse library to latest version
+
+
+***** ISSUES *****
+
+
+=================
+#1 05/03/08	FIXED
+Link error with the library and classes using fstreams
+-----------------
+Happen when using the AGR.lib (debug and release) with a class manipulating fstreams objects ( cVocabulary, cHMM and cGestureRecogniser)
+-----------------
+Compiler output :
+msvcprtd.lib(MSVCP71D.dll) : error LNK2005: "public: void __thiscall std::basic_ofstream<char,struct std::char_traits<char> >::`vbase destructor'(void)" (??_D?$basic_ofstream@DU?$char_traits@D@std@@@std@@QAEXXZ) already defined in AGR_d.lib(HMM.obj)
+msvcprtd.lib(MSVCP71D.dll) : error LNK2005: "public: class std::basic_ostream<char,struct std::char_traits<char> > & __thiscall std::basic_ostream<char,struct std::char_traits<char> >::operator<<(class std::basic_ostream<char,struct std::char_traits<char> > & (__cdecl*)(class std::basic_ostream<char,struct std::char_traits<char> > &))" (??6?$basic_ostream@DU?$char_traits@D@std@@@std@@QAEAAV01@P6AAAV01@AAV01@@Z@Z) already defined in AGR_d.lib(HMM.obj)
+...
+msvcprtd.lib(MSVCP71D.dll) : error LNK2005: "public: char & __thiscall std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >::operator[](unsigned int)" (??A?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAADI@Z) already defined in AGR_d.lib(HMM.obj)
+msvcprtd.lib(MSVCP71D.dll) : error LNK2005: "public: __thiscall std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >(void)" (??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ) already defined in AGR_d.lib(HMM.obj)
+libcpd.lib(ios.obj) : error LNK2005: "public: void __thiscall std::ios_base::clear(int,bool)" (?clear@ios_base@std@@QAEXH_N@Z) already defined in msvcprtd.lib(MSVCP71D.dll)
+...
+LIBCD.lib(crt0.obj) : error LNK2005: __amsg_exit already defined in MSVCRTD.lib(MSVCR71D.dll)
+LIBCD.lib(fflush.obj) : error LNK2005: _fflush already defined in MSVCRTD.lib(MSVCR71D.dll)
+LINK : warning LNK4098: defaultlib 'MSVCRTD' conflicts with use of other libs; use /NODEFAULTLIB:library
+LINK : warning LNK4098: defaultlib 'LIBCD' conflicts with use of other libs; use /NODEFAULTLIB:library
+..\bin\Debug/unitTesting.exe : fatal error LNK1169: one or more multiply defined symbols found
+-----------------
+Temporary fixed by not using the library.
+-----------------
+Fixed by setting the runtime library to Multithreaded DLL (/DL)
+=================
+
+
+=================
+#2 05/03/08	FIXED
+Doesn't receive the good movement pointer when retreiving a recognised movement
+-----------------
+Strange error when sending the movement pointer directly in cMovementRecogniser::getMovement. 
+This problem appears only in the prototype, not with the unit tests.
+See CWiimoteTestDoc::updateAccelerometer()
+-----------------
+Temporary fixed by storing the movement address into a pointer that will be sent instead.
+-----------------
+Seems to be fixed when using the lib version of AGR
+=================
+

@@ -1,0 +1,26 @@
+ASCII HMM File version 2
+Created with AGR v0.10
+
+nbState 5
+observationSize 7
+Mean 0.157881
+Variance 0.0450379
+
+Size of the vocabulary used : 5
+
+PI : Initial probability distribution, size = 5
+1 0 0 0 0 
+
+A : transition probability matrix, size = 5 * 5
+0.001 0.5 0.001 0.001 0.001 
+0.001 0.001 1 0.001 0.001 
+0.001 0.001 0.001 1 0.001 
+0.001 0.001 0.001 0.166667 0.833333 
+0.555556 0.001 0.001 0.001 0.444444 
+
+B : Emission probability matrix, size = 5 * 5
+0.5 0.5 0.001 0.001 0.001 
+0.001 0.001 1 0.001 0.001 
+0.001 0.001 1 0.001 0.001 
+0.001 0.001 0.001 1 0.001 
+0.001 0.001 0.001 0.001 1 

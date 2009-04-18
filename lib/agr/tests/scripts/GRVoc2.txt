@@ -1,0 +1,14 @@
+ASCII Vocabulary File version 1
+Created with AGR v0.10
+
+Size: 7
+Clustering type Id : cKmeansClustering
+
+Buffer :
+1 0 2
+4 -4 10
+6 -6 16
+7 -1 24
+7 9 19
+17 17 3
+26 5 3

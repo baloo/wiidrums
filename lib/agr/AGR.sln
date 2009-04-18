@@ -1,0 +1,80 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AGR library", "scripts\AGRlib.vcproj", "{5E09603B-4A67-44BD-B676-A730DA7E4804}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Sample application", "samples\sampleApp\scripts\sampleApp.vcproj", "{CEA288F4-6534-4C2D-8590-A07E92102AAF}"
+	ProjectSection(ProjectDependencies) = postProject
+		{5E09603B-4A67-44BD-B676-A730DA7E4804} = {5E09603B-4A67-44BD-B676-A730DA7E4804}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Unit testing", "tests\scripts\unitTesting.vcproj", "{5F79F052-5DBB-4CBF-A198-EAD2D277766E}"
+	ProjectSection(ProjectDependencies) = postProject
+		{5E09603B-4A67-44BD-B676-A730DA7E4804} = {5E09603B-4A67-44BD-B676-A730DA7E4804}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Prototype", "samples\prototype\scripts\WiimoteTest.vcproj", "{9BA89A49-EDE5-4F97-9BD2-EB68ABA2F30D}"
+	ProjectSection(ProjectDependencies) = postProject
+		{5E09603B-4A67-44BD-B676-A730DA7E4804} = {5E09603B-4A67-44BD-B676-A730DA7E4804}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GestureCreator", "samples\GestureCreator\scripts\GestureCreator.vcproj", "{EC8372E0-7780-4365-BCC5-3BA93F23195C}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SourceCodeControl) = preSolution
+		SccNumberOfProjects = 6
+		SccLocalPath0 = .
+		CanCheckoutShared = true
+		SolutionUniqueID = {E0973E55-6780-47AE-AC1E-55F7704A26C8}
+		SccProjectUniqueName1 = scripts\\AGRlib.vcproj
+		SccLocalPath1 = .
+		CanCheckoutShared = true
+		SccProjectFilePathRelativizedFromConnection1 = scripts\\
+		SccProjectUniqueName2 = samples\\sampleApp\\scripts\\sampleApp.vcproj
+		SccLocalPath2 = samples\\sampleApp
+		CanCheckoutShared = true
+		SccProjectFilePathRelativizedFromConnection2 = scripts\\
+		SccProjectUniqueName3 = tests\\scripts\\unitTesting.vcproj
+		SccLocalPath3 = tests
+		CanCheckoutShared = true
+		SccProjectFilePathRelativizedFromConnection3 = scripts\\
+		SccProjectUniqueName4 = samples\\prototype\\scripts\\WiimoteTest.vcproj
+		SccLocalPath4 = .
+		CanCheckoutShared = true
+		SccProjectFilePathRelativizedFromConnection4 = samples\\prototype\\scripts\\
+		SccProjectUniqueName5 = samples\\GestureCreator\\scripts\\GestureCreator.vcproj
+		SccLocalPath5 = .
+		CanCheckoutShared = true
+		SccProjectFilePathRelativizedFromConnection5 = samples\\GestureCreator\\scripts\\
+	EndGlobalSection
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Release = Release
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{5E09603B-4A67-44BD-B676-A730DA7E4804}.Debug.ActiveCfg = Debug|Win32
+		{5E09603B-4A67-44BD-B676-A730DA7E4804}.Debug.Build.0 = Debug|Win32
+		{5E09603B-4A67-44BD-B676-A730DA7E4804}.Release.ActiveCfg = Release|Win32
+		{5E09603B-4A67-44BD-B676-A730DA7E4804}.Release.Build.0 = Release|Win32
+		{CEA288F4-6534-4C2D-8590-A07E92102AAF}.Debug.ActiveCfg = Debug|Win32
+		{CEA288F4-6534-4C2D-8590-A07E92102AAF}.Debug.Build.0 = Debug|Win32
+		{CEA288F4-6534-4C2D-8590-A07E92102AAF}.Release.ActiveCfg = Release|Win32
+		{CEA288F4-6534-4C2D-8590-A07E92102AAF}.Release.Build.0 = Release|Win32
+		{5F79F052-5DBB-4CBF-A198-EAD2D277766E}.Debug.ActiveCfg = Debug|Win32
+		{5F79F052-5DBB-4CBF-A198-EAD2D277766E}.Debug.Build.0 = Debug|Win32
+		{5F79F052-5DBB-4CBF-A198-EAD2D277766E}.Release.ActiveCfg = Release|Win32
+		{5F79F052-5DBB-4CBF-A198-EAD2D277766E}.Release.Build.0 = Release|Win32
+		{9BA89A49-EDE5-4F97-9BD2-EB68ABA2F30D}.Debug.ActiveCfg = Debug|Win32
+		{9BA89A49-EDE5-4F97-9BD2-EB68ABA2F30D}.Release.ActiveCfg = Release|Win32
+		{EC8372E0-7780-4365-BCC5-3BA93F23195C}.Debug.ActiveCfg = Debug|Win32
+		{EC8372E0-7780-4365-BCC5-3BA93F23195C}.Debug.Build.0 = Debug|Win32
+		{EC8372E0-7780-4365-BCC5-3BA93F23195C}.Release.ActiveCfg = Release|Win32
+		{EC8372E0-7780-4365-BCC5-3BA93F23195C}.Release.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

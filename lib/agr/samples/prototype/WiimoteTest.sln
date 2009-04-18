@@ -1,0 +1,21 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "WiimoteTest", "scripts/WiimoteTest.vcproj", "{9BA89A49-EDE5-4F97-9BD2-EB68ABA2F30D}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Release = Release
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{9BA89A49-EDE5-4F97-9BD2-EB68ABA2F30D}.Debug.ActiveCfg = Debug|Win32
+		{9BA89A49-EDE5-4F97-9BD2-EB68ABA2F30D}.Debug.Build.0 = Debug|Win32
+		{9BA89A49-EDE5-4F97-9BD2-EB68ABA2F30D}.Release.ActiveCfg = Release|Win32
+		{9BA89A49-EDE5-4F97-9BD2-EB68ABA2F30D}.Release.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

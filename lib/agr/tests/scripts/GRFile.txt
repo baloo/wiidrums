@@ -1,0 +1,150 @@
+ASCII AGR File version 2
+Created with AGR v0.10
+
+Nb Vocabulary object stored: 2
+
+*** Vocabulary objects ***
+---------------
+NoName
+- - - - - - - -
+ASCII Vocabulary File version 1
+Created with AGR v0.10
+
+Size: 5
+Clustering type Id : cKmeansClustering
+
+Buffer :
+-7 1 6
+5 2 0
+17 9 6
+7 19 13
+0 10 13
+---------------
+
+---------------
+Voc2
+- - - - - - - -
+ASCII Vocabulary File version 1
+Created with AGR v0.10
+
+Size: 7
+Clustering type Id : cKmeansClustering
+
+Buffer :
+2 -2 3
+4 -7 11
+6 -7 17
+7 -1 25
+7 9 19
+17 17 3
+26 5 3
+---------------
+
+Nb Gestures object stored: 3
+
+*** Gestures objects ***
+---------------
+NoName
+- - - - - - - -
+ASCII HMM File version 2
+Created with AGR v0.10
+
+nbState 5
+observationSize 7
+Mean 0.145043
+Variance 0.045196
+
+Size of the vocabulary used : 5
+
+PI : Initial probability distribution, size = 5
+1 0 0 0 0 
+
+A : transition probability matrix, size = 5 * 5
+0.001 0.5 0.001 0.001 0.001 
+0.001 0.001 1 0.001 0.001 
+0.001 0.001 0.001 1 0.001 
+0.001 0.001 0.001 0.166667 0.833333 
+0.555556 0.001 0.001 0.001 0.444444 
+
+B : Emission probability matrix, size = 5 * 5
+0.5 0.5 0.001 0.001 0.001 
+0.001 0.001 1 0.001 0.001 
+0.001 0.001 1 0.001 0.001 
+0.001 0.001 0.001 1 0.001 
+0.001 0.001 0.001 0.0227273 0.977273 
+- - - - - - - -
+Id Vocabulary associated: 0
+---------------
+
+---------------
+GestureA
+- - - - - - - -
+ASCII HMM File version 2
+Created with AGR v0.10
+
+nbState 7
+observationSize 10
+Mean 0.28615
+Variance 0.0753975
+
+Size of the vocabulary used : 7
+
+PI : Initial probability distribution, size = 7
+1 0 0 0 0 0 0 
+
+A : transition probability matrix, size = 7 * 7
+0.001 1 0.001 0.001 0.001 0.001 0.001 
+0.001 0.001 1 0.001 0.001 0.001 0.001 
+0.001 0.001 0.001 1 0.001 0.001 0.001 
+0.001 0.001 0.001 0.0909091 0.909091 0.001 0.001 
+0.001 0.001 0.001 0.001 0.473684 0.526316 0.001 
+0.001 0.001 0.001 0.001 0.001 0.666667 0.333333 
+0.001 0.001 0.001 0.001 0.001 0.001 0.001 
+
+B : Emission probability matrix, size = 7 * 7
+1 0.001 0.001 0.001 0.001 0.001 0.001 
+0.001 0.923077 0.0769231 0.001 0.001 0.001 0.001 
+0.001 0.001 1 0.001 0.001 0.001 0.001 
+0.001 0.001 0.001 1 0.001 0.001 0.001 
+0.001 0.001 0.001 0.001 1 0.001 0.001 
+0.001 0.001 0.001 0.001 0.001 1 0.001 
+0.001 0.001 0.001 0.001 0.001 0.001 1 
+- - - - - - - -
+Id Vocabulary associated: 1
+---------------
+
+---------------
+With spaces
+- - - - - - - -
+ASCII HMM File version 2
+Created with AGR v0.10
+
+nbState 6
+observationSize 10
+Mean 0.00390361
+Variance 0
+
+Size of the vocabulary used : 7
+
+PI : Initial probability distribution, size = 6
+1 0 0 0 0 0 
+
+A : transition probability matrix, size = 6 * 6
+0.001 1 0.001 0.001 0.001 0.001 
+0.001 0.5 0.5 0.001 0.001 0.001 
+0.001 0.001 0.001 1 0.001 0.001 
+0.001 0.001 0.001 0.5 0.001 0.5 
+0.001 0.001 0.001 0.001 0.411765 0.001 
+0.001 0.001 0.001 0.001 0.434783 0.565217 
+
+B : Emission probability matrix, size = 6 * 7
+0.001 0.001 0.001 0.001 0.001 0.001 1 
+0.001 0.001 0.001 0.001 0.001 1 0.001 
+0.001 0.001 0.001 0.001 0.001 1 0.001 
+0.001 0.001 0.001 0.001 1 0.001 0.001 
+0.724138 0.275862 0.001 0.001 0.001 0.001 0.001 
+0.001 0.111111 0.422222 0.466667 0.001 0.001 0.001 
+- - - - - - - -
+Id Vocabulary associated: 1
+---------------
+

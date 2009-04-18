@@ -1,0 +1,52 @@
+Earlier version before roadmap
+
+test1 ( v0.1 )	"Wiimote test"
+test2 ( v0.2 )	"Accelerometer interface"
+test3 ( v0.3 )	"3D Display"
+test4 ( v0.4 )	"Sampling"
+test5 ( v0.5 )	"HMM"
+test6 ( v0.6 )	"HMM Continued"
+test7 ( v0.7 )	"OOP HMM"
+test8 ( v0.8 )	"OOP HMM cleaned"
+
+
+
+
+***** Roadmap *****
+(Subject to change)
+
+v0.8	"OOP HMM Cleaned "
+Estimated for the meeting on february 26
+Completed 25/02/08
+X * GestureRecogniser class 
+X * Save/load - ASCII mode 
+
+v0.9	"Unit testing"
+Estimated for the meeting on march 11
+Completed 08/03/08
+X * Add unit testing	(may discovers some exisiting issues to fix)
+X * Command line test application
+X * File system for the project to be cleaned, re-organised
+X * Movement recognition
+X * Gesture classification
+ 
+v0.10	"Linux"
+Estimated for the meeting on march 18
+Completed 11/03/08
+X * Save in binary mode
+X * Linux makefiles
+
+v1.0	"RC 1"
+Estimated for the meeting on april 1
+Completed 30/03/08
+ * New GUI application
+ * Release on sourceforge ?
+ 
+Next versions, not decided yet
+ * Sixaxis
+ * Bug fixes
+ * Users feedbacks and ideas implementations
+ * Test other implementations
+ * Optimisations
+ * CELL
+ * Sample game using the library
