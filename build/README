@@ -1,0 +1,2 @@
+Builds may be made here,
+cmake permits an Out-of-source build and this mechanism keeps sources clean
