@@ -1,5 +1,5 @@
 
-#include "WiimoteManager.h"
+#include "wiimotemanager.h"
 
 using std::cout; 
 using namespace std;
@@ -134,8 +134,20 @@ void WiimoteManager::noLedAnymore(){
 //Prise en charge des évènements de la wiimote
 void WiimoteManager::handleWiimotesEvent(wiimote *wm){
 
-    if (IS_PRESSED(wm, WIIMOTE_BUTTON_UP))
-      //switchToAlarmMode();
+  // Le bouton - désactive les accéléromètres
+  if (IS_JUST_PRESSED(wm, WIIMOTE_BUTTON_MINUS))
+    wiiuse_motion_sensing(wm, 0);
+
+  // Le bouton + active les accéléromètres
+  if (IS_JUST_PRESSED(wm, WIIMOTE_BUTTON_PLUS))
+    wiiuse_motion_sensing(wm, 1);
+
+  // Si l'accéléromètre est activé on affiche 
+  if (WIIUSE_USING_ACC(wm)) {
+        printf("wiimote roll  = %f [%f]\n", wm->orient.roll, wm->orient.a_roll);
+        printf("wiimote pitch = %f [%f]\n", wm->orient.pitch, wm->orient.a_pitch);
+        printf("wiimote yaw   = %f\n", wm->orient.yaw);
+  }
 
 }
 
