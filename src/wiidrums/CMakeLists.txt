@@ -14,9 +14,9 @@ SET(WIIDRUMS_SRCS
     )
 
 SET(WIIDRUMS_HDRS
-    wiimotemanager
-    gui/simplegui
-    gui/wiimoteview
+    wiimotemanager.h
+    gui/simplegui.h
+    gui/wiimoteview.h
     )
 
 
