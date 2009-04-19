@@ -18,7 +18,7 @@ WiimoteManager::WiimoteManager(){
 
     eventTimer = new QTimer(this);
     connect(eventTimer, SIGNAL(timeout()), this, SLOT(timeOutHidenEvent()));
-    timeInterval = 250;
+    timeInterval = 2000;
 }
 
 //Destructeur
@@ -115,12 +115,10 @@ void WiimoteManager::changeIRSensitivity(int numWiimote, int sensitivity){
 //On définit les LEDS en fonction de la position de la wiimote
 void WiimoteManager::setLedsByDefault(){
     //La wiimote de la main gauche est identifiée par les deux LEDS de gauche
-    wiiuse_set_leds(wiimotes[0], WIIMOTE_LED_1);
-    wiiuse_set_leds(wiimotes[0], WIIMOTE_LED_2);
+    wiiuse_set_leds(wiimotes[0], WIIMOTE_LED_1 | WIIMOTE_LED_2);
     
     //La wiimote de la main droite est identifiée par les deux LEDS de droite
-    wiiuse_set_leds(wiimotes[1], WIIMOTE_LED_3);
-    wiiuse_set_leds(wiimotes[1], WIIMOTE_LED_4);
+    wiiuse_set_leds(wiimotes[1], WIIMOTE_LED_3 | WIIMOTE_LED_4);
 }
 
 //On éteint les LEDS de toute wiimote connectée
@@ -135,12 +133,15 @@ void WiimoteManager::noLedAnymore(){
 void WiimoteManager::handleWiimotesEvent(wiimote *wm){
 
   // Le bouton - désactive les accéléromètres
-  if (IS_JUST_PRESSED(wm, WIIMOTE_BUTTON_MINUS))
+  if (IS_JUST_PRESSED(wm, WIIMOTE_BUTTON_MINUS)){
     wiiuse_motion_sensing(wm, 0);
+  }
 
   // Le bouton + active les accéléromètres
-  if (IS_JUST_PRESSED(wm, WIIMOTE_BUTTON_PLUS))
+  if (IS_JUST_PRESSED(wm, WIIMOTE_BUTTON_PLUS)){
     wiiuse_motion_sensing(wm, 1);
+    wiiuse_set_orient_threshold(wm, 5);
+  }
 
   // Si l'accéléromètre est activé on affiche 
   if (WIIUSE_USING_ACC(wm)) {
@@ -169,8 +170,8 @@ void WiimoteManager::exec(){
 
     //On active le motion tracking
     // Temporairement l'id est fixe
-    wiiuse_motion_sensing(wiimotes[0], 1);
-    wiiuse_motion_sensing(wiimotes[1], 1);
+    //wiiuse_motion_sensing(wiimotes[0], 1);
+    //wiiuse_motion_sensing(wiimotes[1], 1);
     
     while(nbWiimoteConnected != 0){
     //cout << "NbWiimotes : " << nbWiimoteConnected << endl;
