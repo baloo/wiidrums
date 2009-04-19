@@ -19,7 +19,7 @@
 #include <QWidget>
 
 #include "wiimotemanager.h"
-#include "wiimoteview.h"
+#include "gui/wiimoteview.h"
 
 class SimpleGUI : public QWidget {
 

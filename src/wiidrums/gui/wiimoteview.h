@@ -1,20 +1,3 @@
-/*
-    WiiGuard - Home guardian with Wiimotes
-    Copyright (C) 2009  David BONNET - Vincent GUYOMARD
-
-    This program is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/
 
 /**
  * @file
@@ -34,7 +17,7 @@
 #include <QtGui>
 #include <QtCore>
 #include <QAbstractSlider>
-#include <wiimote/WiimoteManager.h>
+#include <wiimotemanager.h>
 
 class WiimoteView : public QWidget {
 
@@ -61,16 +44,6 @@ class WiimoteView : public QWidget {
 	 * Slot qui se charge de l'activation de l'IR
 	 */
 	void handleIRActivation();
-
-	/**
-	 * Méthode qui gère la wiimote lorsque le mode alarme est activé
-	 */
-	void handleAlarmModeEnabled(bool isAlarmModeEnabled);
-
-	/**
-	 * Slot qui gère le déclenchement de l'alarme sur la wiimote
-	 */
-	void handleAlarmDeclenched(int numWm, int numDot);
 
 	/**
 	 * Slot qui gère l'affichage des points IR détectés

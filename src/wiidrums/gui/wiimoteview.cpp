@@ -1,22 +1,6 @@
-/*
-    WiiGuard - Home guardian with Wiimotes
-    Copyright (C) 2009  David BONNET - Vincent GUYOMARD
 
-    This program is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
 
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/
-
-#include "WiimoteView.h"
+#include "wiimoteview.h"
 
 //Constructeur
 WiimoteView::WiimoteView(WiimoteManager *wm, int numWm){
@@ -32,10 +16,7 @@ WiimoteView::WiimoteView(WiimoteManager *wm, int numWm){
 	QLabel *status = new QLabel("Statut :");
 
 	wiimoteStatus = new QLabel("<font color=\"orange\">Initialisation</font>");
-	connect(manager, SIGNAL(alarmModeEnable(bool)), this, SLOT(handleAlarmModeEnabled(bool)));
 
-	//Gestion de l'alarme
-	connect(manager, SIGNAL(alarmDeclenched(int, int)), this, SLOT(handleAlarmDeclenched(int, int)));
 	//Gestion des points IR
 	connect(manager, SIGNAL(wiimoteIRDotDetected(int, int, bool, int, int)), this, SLOT(handleIRDotDetected(int, int, bool, int, int)));
 
@@ -116,45 +97,6 @@ void WiimoteView::handleIRActivation(){
     }
 
     irEnable = !irEnable;
-}
-
-//On gère l'affichage pour l'alarme
-void WiimoteView::handleAlarmModeEnabled(bool isAlarmModeEnabled){
-
-	if(isAlarmModeEnabled){
-	      wiimoteStatus->setText("<font color=\"green\">OK</font>");
-	} else {
-	      wiimoteStatus->setText("<font color=\"orange\">Initialisation</font>");
-	      alarmDelenched = false;
-	}
-}
-
-//Gestion de l'alarme
-void WiimoteView::handleAlarmDeclenched(int numWm, int numDot){
-
-	if(numWiimote == numWm){
-	    //Alors nous sommes concernés par l'alarme
-	    alarmDelenched = true;
-	    wiimoteStatus->setText(QString::fromUtf8("<font color=\"red\">Alarme déclenchée</font>"));
-
-	    switch(numDot){
-		case 1:
-		    dot1->setText("<font color=\"red\">1</font>");
-		    break;
-		case 2:
-		    dot2->setText("<font color=\"red\">2</font>");
-		    break;
-		case 3:
-		    dot3->setText("<font color=\"red\">3</font>");
-		    break;
-		case 4:
-		    dot4->setText("<font color=\"red\">4</font>");
-		    break;
-		default:
-		    break;
-	    }
-
-	}
 }
 
 //Gestion des points IR
