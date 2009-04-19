@@ -53,24 +53,12 @@ SimpleGUI::~SimpleGUI(){
     delete menuBar;
     delete menuFichier;
     delete menuWiimote;
-    delete menuAlarme;
     delete menuAide;
 
     delete aboutAction;
     delete quitAction;
     delete wiimoteConnexion;
     delete wiimoteDeconnexion;
-    delete wiimoteAlarmMode;
-}
-
-void SimpleGUI::switchInfoMode(bool isAlarmEnabled){
-    if(isAlarmEnabled){
-        infoModeLabel->setText(QString::fromUtf8("Alarme Activée"));
-        globalStatus->setText(QString::fromUtf8("<font color=\"green\" style=\"font-size:25px;\">OK</font>"));
-    } else {
-        infoModeLabel->setText("Positionnement des Wiimotes");
-        globalStatus->setText(QString::fromUtf8("<font color=\"orange\" style=\"font-size:25px;\">Initialisation</font>"));
-    }
 }
 
 //Gestion de l'affichage des wiimotes
