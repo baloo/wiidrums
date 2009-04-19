@@ -164,13 +164,23 @@ void WiimoteManager::exec(){
 
     eventTimer->start(timeInterval);
 
+    cout << "Main event loop" << endl;
+    cout << nbWiimoteConnected << endl;
+
+    //On active le motion tracking
+    // Temporairement l'id est fixe
+    wiiuse_motion_sensing(wiimotes[0], 1);
+    wiiuse_motion_sensing(wiimotes[1], 1);
+    
     while(nbWiimoteConnected != 0){
     //cout << "NbWiimotes : " << nbWiimoteConnected << endl;
       //Wiiuse_pool vérifie les évènements de chaque wiimote, si un évènement à eu lieu, alors la fonction est déclenchée
       if(wiiuse_poll(wiimotes, MAX_WIIMOTES)) {
+          cout << "Inside If" << endl;
 
           //Pour chaque wiimote
           for (int i=0; i < MAX_WIIMOTES; ++i) {
+            cout << "Inside for : i = " << i << endl;
             switch (wiimotes[i]->event) {
                 case WIIUSE_EVENT:
                   this->handleWiimotesEvent(wiimotes[i]);
