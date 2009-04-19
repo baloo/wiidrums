@@ -1,41 +1,18 @@
-/*
- * vim: ts=4 sw=4 expandtab:
-    WiiGuard - Home guardian with Wiimotes
-    Copyright (C) 2009  David BONNET - Vincent GUYOMARD
-
-    This program is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/
-
 /**
  * @file
  *
- * Gestionnaire de wiimotes pour l'application WiiGuard
- * Ce gestionnaire vérifie pour chaque wiimote l'état des points IR
- * et reporte les éventuels points qui disparaissent
- * 
- * La wiimote est matériellement limitée à 4 points IR détectés
+ * Gestionnaire de wiimotes pour l'application wiidrums
  *
  * @author David Bonnet pour Polytech'WiiGuard Team
- * @date 13/03/2009 14:19
- * @since 17/03/2009 13:50
- * @version 1.0
+ * @date 19/04/2009 16:11
+ * @since 19/04/2009 13:50
+ * @version 0.0
  */
 
 #ifndef DEF_WIIMOTEMANAGER
 #define DEF_WIIMOTEMANAGER
 
-#define MAX_WIIMOTES 4  //4 wiimotes maximum
+#define MAX_WIIMOTES 2  //2 wiimotes maximum
 
 #include <QtCore>
 #include <iostream>
@@ -108,14 +85,6 @@ class WiimoteManager : public QObject {
 
     private:
 
-    /**
-     * Méthode qui vérifie l'état des points IR avec la configuration actuelle
-     *
-     * @param wm Wiimote
-     * @param numIRDot numéro du point IR
-     */
-    bool diffBetweenOriginalIRDotsAnd(wiimote* wm, int numIRDot);
-
     public slots:
     /**
      * Slot qui permet d'activer l'IR d'une wiimote
@@ -130,16 +99,6 @@ class WiimoteManager : public QObject {
      * @param numWiimote - ATTENTION le numéro commence à 1
      */
     bool disableIRWiimote(int numWiimote = 1);
-
-    /**
-     * Slot qui permet de switcher en mode d'initialisation
-     */
-    void switchToInitMode();
-
-    /**
-     * Slot qui permet de switcher en mode alarme
-     */
-    void switchToAlarmMode();
 
     /**
      * Slot qui permet de changer la sensibilité d'une wiimote
@@ -170,21 +129,6 @@ class WiimoteManager : public QObject {
      * Signal envoyé lors d'un échec de connexion avec les wiimotes
      */
     void failedToConnect();
-
-    /**
-     * Signal envoyé pour chaque point IR d'une wiimote connectée
-     */
-    void wiimoteIRDotDetected(int numWiimote, int numDot, bool visible, int x, int y);
-
-    /**
-     * Signal envoyé lors du déclenchement de l'alarme
-     */
-    void alarmDeclenched(int numWiimote, int numDot);
-
-    /**
-     * Signal envoyé lors du passage d'un mode à l'autre
-     */
-    void alarmModeEnable(bool isAlarmEnabled);
 
     /**
      * Signal envoyé lors du changement de la sensibilité IR de la wiimote
