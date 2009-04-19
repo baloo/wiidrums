@@ -16,7 +16,7 @@
 
 #include <QApplication>
 #include <iostream>
-#include "gui/simple/SimpleGUI.h"
+#include "gui/simplegui.h"
 
 int main(int argc, char *argv[]){
 
