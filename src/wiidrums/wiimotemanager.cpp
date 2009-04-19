@@ -1,6 +1,5 @@
 
 #include "WiimoteManager.h"
-#include "include/wiiuse.h"
 
 using std::cout; 
 using namespace std;

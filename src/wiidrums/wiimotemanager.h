@@ -21,7 +21,7 @@
     #include <unistd.h>
 #endif
 
-#include "include/wiiuse.h"
+#include <wiiuse.h>
 
 using namespace std;
 
