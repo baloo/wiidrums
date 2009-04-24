@@ -46,11 +46,6 @@ class WiimoteView : public QWidget {
 	void handleIRActivation();
 
 	/**
-	 * Slot qui gère l'affichage des points IR détectés
-	 */
-	void handleIRDotDetected(int numWm, int numDot, bool visible, int x, int y);
-
-	/**
 	 * Slot qui gère le changement de sensibilité de la wiimote
 	 */
 	void handleIRSensitivityChange(int numWm, int sensitivity);

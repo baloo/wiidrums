@@ -18,7 +18,7 @@ WiimoteView::WiimoteView(WiimoteManager *wm, int numWm){
 	wiimoteStatus = new QLabel("<font color=\"orange\">Initialisation</font>");
 
 	//Gestion des points IR
-	connect(manager, SIGNAL(wiimoteIRDotDetected(int, int, bool, int, int)), this, SLOT(handleIRDotDetected(int, int, bool, int, int)));
+//connect(manager, SIGNAL(wiimoteIRDotDetected(int, int, bool, int, int)), this, SLOT(handleIRDotDetected(int, int, bool, int, int)));
 
 	//Gestion sensibilité IR
 	connect(manager, SIGNAL(wiimoteIRSensitivityChange(int, int)), this, SLOT(handleIRSensitivityChange(int, int)));
@@ -97,42 +97,6 @@ void WiimoteView::handleIRActivation(){
     }
 
     irEnable = !irEnable;
-}
-
-//Gestion des points IR
-void WiimoteView::handleIRDotDetected(int numWm, int numDot, bool visible, int x, int y){
-	
-	if((numWiimote == numWm) && !alarmDelenched){
-	    //Alors nous sommes concernés
-	    switch(numDot){
-		case 1:
-		    if(visible)
-		      dot1->setText("<font color=\"green\">1</font>");
-		    else
-		      dot1->setText("<font color=\"gray\">1</font>");
-		    break;
-		case 2:
-		    if(visible)
-		      dot2->setText("<font color=\"green\">2</font>");
-		    else
-		      dot2->setText("<font color=\"gray\">2</font>");
-		    break;
-		case 3:
-		    if(visible)
-		      dot3->setText("<font color=\"green\">3</font>");
-		    else
-		      dot3->setText("<font color=\"gray\">3</font>");
-		    break;
-		case 4:
-		    if(visible)
-		      dot4->setText("<font color=\"green\">4</font>");
-		    else
-		      dot4->setText("<font color=\"gray\">4</font>");
-		    break;
-		default:
-		    break;
-	    }
-	}
 }
 
 //Gestion du changement de sensibilité de la wiimote
