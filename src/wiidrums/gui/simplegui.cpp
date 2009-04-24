@@ -5,6 +5,11 @@
 SimpleGUI::SimpleGUI() : QWidget() {
     //On crée le gestionnaire de Wiimotes
     manager = new WiimoteManager;
+    genericMediaObject = new GenericMediaObject;
+    genericMediaObject->setCurrentSource( Phonon::MediaSource("../../../res/hiTom.wav") );
+    
+    Phonon::AudioOutput audioOut(Phonon::MusicCategory, this);
+    genericMediaObject->setAudioOutput(audioOut);
 
     //Connexions avec le manager
     connect(manager, SIGNAL(failedToConnect()), this, SLOT(failedToConnectMessage()));
@@ -106,7 +111,7 @@ void SimpleGUI::aboutDialog(){
          "Remerciements : WiiGuard, WiiUse 0.12 et Qt 4.4.3"));
 }
 
-void SimpleGUI::lauchWiimoteConnexion(){
+void SimpleGUI::launchWiimoteConnexion(){
     QMessageBox::information(this, "Connexion des Wiimotes" ,QString::fromUtf8("Veuillez mettre les wiimotes en mode découverte (1+2) puis cliquez sur Ok"));
 
     infoModeLabel->setText(QString::fromUtf8("Connexion en cours..."));
@@ -138,7 +143,7 @@ void SimpleGUI::creerMenus(){
     wiimoteConnexion = new QAction(tr("Connexion des Wiimotes"), this);
     wiimoteConnexion->setShortcut(tr("Shift+C"));
     wiimoteConnexion->setStatusTip(tr("Lancer la connexion des wiimotes"));
-    connect(wiimoteConnexion, SIGNAL(triggered()), this, SLOT(lauchWiimoteConnexion() ));
+    connect(wiimoteConnexion, SIGNAL(triggered()), this, SLOT(launchWiimoteConnexion() ));
 
     wiimoteDeconnexion = new QAction(QString::fromUtf8("Déconnexion"), this);
     wiimoteDeconnexion->setShortcut(tr("Shift+D"));
@@ -146,10 +151,17 @@ void SimpleGUI::creerMenus(){
     wiimoteDeconnexion->setEnabled(false);
     connect(wiimoteDeconnexion, SIGNAL(triggered()), this, SLOT(handleDisconnect() ));
 
+    testSon = new QAction(QString::fromUtf8("Test son"), this);
+    testSon->setShortcut(tr("Shift+S"));
+    testSon->setStatusTip(QString::fromUtf8("Tester le son"));
+    testSon->setEnabled(true);
+    connect(testSon, SIGNAL(triggered()), genericMediaObject, SLOT(play() ));
+
     //On connecte le tout
     menuFichier->addAction(quitAction);
     menuWiimote->addAction(wiimoteConnexion);
     menuWiimote->addAction(wiimoteDeconnexion);
     menuAide->addAction(aboutAction);
+    menuAide->addAction(testSon);
 }
 

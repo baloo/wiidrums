@@ -17,9 +17,11 @@
 #include <QtGui>
 #include <QtCore>
 #include <QWidget>
+#include <Phonon>
 
 #include "wiimotemanager.h"
 #include "gui/wiimoteview.h"
+#include "audio/genericmediaobject.h"
 
 class SimpleGUI : public QWidget {
 
@@ -38,7 +40,7 @@ class SimpleGUI : public QWidget {
 
       protected slots:
         void aboutDialog();
-        void lauchWiimoteConnexion();
+        void launchWiimoteConnexion();
         
         /**
         * Slot qui va gérer l'affichage des wiimotes sur la GUI
@@ -58,6 +60,8 @@ class SimpleGUI : public QWidget {
       private:
         //Concernant la gestion des Wiimotes
         WiimoteManager *manager;
+
+        GenericMediaObject *genericMediaObject;
 
 
         /**
@@ -85,6 +89,7 @@ class SimpleGUI : public QWidget {
         QAction *quitAction;
         QAction *wiimoteConnexion;
         QAction *wiimoteDeconnexion;
+        QAction *testSon;
 
 };
 
