@@ -12,6 +12,7 @@ SET(WIIDRUMS_SRCS
     wiimote/wiimotemanager
     wiimote/wiimote
     wiimote/wiimotes
+    audio/genericmediaobject
     gui/simplegui
     gui/wiimoteview
     )
@@ -20,6 +21,7 @@ SET(WIIDRUMS_HDRS
     wiimote/wiimote.h
     wiimote/wiimotes.h
     wiimote/wiimotemanager.h
+    audio/genericmediaobject.h
     gui/simplegui.h
     gui/wiimoteview.h
     )
@@ -40,6 +42,7 @@ INCLUDE_DIRECTORIES(
     )
 
 LINK_LIBRARIES(
+    ${QT_PHONON_LIBRARY}
     ${QT_QTGUI_LIBRARY}
     ${QT_LIBRARIES}
     ${Qwt5_Qt4_LIBRARY}
