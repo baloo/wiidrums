@@ -6,9 +6,10 @@ SimpleGUI::SimpleGUI() : QWidget() {
     //On crée le gestionnaire de Wiimotes
     manager = new WiimoteManager;
     genericMediaObject = new GenericMediaObject;
-    genericMediaObject->setCurrentSource( Phonon::MediaSource("../../../res/hiTom.wav") );
+    genericMediaObject->setCurrentSource( Phonon::MediaSource("../../../res/test.wav") );
+    //genericMediaObject->setCurrentSource( Phonon::MediaSource("../../../res/hiTom.wav") );
     
-    Phonon::AudioOutput audioOut(Phonon::MusicCategory, this);
+    Phonon::AudioOutput * audioOut = new Phonon::AudioOutput(Phonon::MusicCategory, this);
     genericMediaObject->setAudioOutput(audioOut);
 
     //Connexions avec le manager

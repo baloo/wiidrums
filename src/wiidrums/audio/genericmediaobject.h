@@ -3,9 +3,12 @@
 #ifndef DEF_GENERIC_MEDIA_OBJECT
 #define DEF_GENERIC_MEDIA_OBJECT
 
-#include <Phonon>
+#include <Phonon/AudioOutput>
+#include <Phonon/MediaObject>
 #include <QList>
 #include <QObject>
+
+#include <QDebug>
 
 using namespace Phonon;
 
@@ -14,11 +17,11 @@ class GenericMediaObject : public QObject
   Q_OBJECT
 
   public:
-    GenericMediaObject(int minInstances = 2, int maxInstances = 10);
+    GenericMediaObject(int minInstances = 1, int maxInstances = 3);
     ~GenericMediaObject();
 
     void setCurrentSource(const MediaSource & source);
-    void setAudioOutput(AudioOutput & output);
+    void setAudioOutput(AudioOutput * output);
 
   public slots:
     void play();

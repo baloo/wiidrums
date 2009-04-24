@@ -17,7 +17,7 @@
 #include <QtGui>
 #include <QtCore>
 #include <QWidget>
-#include <Phonon>
+#include <Phonon/AudioOutput>
 
 #include "wiimotemanager.h"
 #include "gui/wiimoteview.h"
