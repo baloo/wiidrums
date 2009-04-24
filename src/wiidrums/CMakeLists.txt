@@ -34,6 +34,7 @@ QT4_WRAP_CPP(WIIDRUMS_CORE_MOC_SRCS
 
 INCLUDE_DIRECTORIES(
     .
+    wiimote
     ${Qwt5_INCLUDE_DIR}
     ${Wiiuse_INCLUDE_DIR}
     )
