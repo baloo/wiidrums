@@ -9,17 +9,17 @@ FIND_PACKAGE(Wiiuse REQUIRED)
 
 SET(WIIDRUMS_SRCS
     wiidrums
-    wiimotemanager
-    wiimote
-    wiimotes
+    wiimote/wiimotemanager
+    wiimote/wiimote
+    wiimote/wiimotes
     gui/simplegui
     gui/wiimoteview
     )
 
 SET(WIIDRUMS_HDRS
-    wiimote.h
-    wiimotes.h
-    wiimotemanager.h
+    wiimote/wiimote.h
+    wiimote/wiimotes.h
+    wiimote/wiimotemanager.h
     gui/simplegui.h
     gui/wiimoteview.h
     )
