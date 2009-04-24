@@ -83,6 +83,12 @@ class WiimoteManager : public QObject {
      */
     void exec();
 
+    signals:
+    void timerEvent(QTimerEvent *e);
+
+    protected slots:
+    void readWiimoteAccel(QTimerEvent *e);
+
     private:
 
     public slots:

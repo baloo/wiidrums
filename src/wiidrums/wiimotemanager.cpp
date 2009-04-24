@@ -205,5 +205,18 @@ void WiimoteManager::exec(){
     eventTimer->stop();
 }
 
+void WiimoteManager::readWiimoteAccel(QTimerEvent *){
+    for(int i=0; i<MAX_WIIMOTES; i++){
+      handleWiimotesEvent(wiimotes[i]);
+    }
+}
+
+/*void WiimoteManager::updateWiimoteAccel(wiimote * wm){
+    if(WIIUSE_USING_ACC(wm)) {
+        //On a besoin d'un objet ffs
+        
+    }
+}*/
+
 
 
