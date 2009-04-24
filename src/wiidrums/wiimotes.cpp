@@ -51,7 +51,7 @@ int Wiimotes::connect()
 
     for(i =0; i < myWiimotes; i++)
     {
-        this->wiimotesList->push_back(new Wiimote(this->wiimotes[i]));
+        this->wiimotesList->push_back(new Wiimote(this->wms[i]));
     }
 
 }
