@@ -24,7 +24,14 @@ int main(int argc, char *argv[]){
     app.setApplicationName("wiidrums");
     app.setQuitOnLastWindowClosed(true);
 
-    cout << "WiiGuard  Copyright (C) 2009  David BONNET - Vincent GUYOMARD" << endl << "WiiDrums  Copyright (C) 2009  David BONNET - Arthur GAUTIER" << endl << endl << "This program comes with ABSOLUTELY NO WARRANTY." << endl << "This is free software, and you are welcome to redistribute it under certain conditions." << endl << endl;
+    cout << "WiiGuard  Copyright (C) 2009  David BONNET - Vincent GUYOMARD"
+         << endl
+         << "WiiDrums  Copyright (C) 2009  David BONNET - Arthur GAUTIER"
+         << endl << endl
+         << "This program comes with ABSOLUTELY NO WARRANTY." << endl
+         << "This is free software, and you are welcome to redistribute it "
+         << "under certain conditions."
+         << endl << endl;
 
     SimpleGUI simpleGui;
     simpleGui.show();
