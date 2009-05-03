@@ -13,7 +13,8 @@ SET(WIIDRUMS_SRCS
     wiimote/wiimotemanager
     wiimote/wiimote
     wiimote/wiimotes
-    audio/genericmediaobject
+    audio/audioobject
+    audio/genericaudioobject
     gui/simplegui
     gui/wiimoteview
     )
@@ -22,7 +23,8 @@ SET(WIIDRUMS_HDRS
     wiimote/wiimote.h
     wiimote/wiimotes.h
     wiimote/wiimotemanager.h
-    audio/genericmediaobject.h
+    audio/genericaudioobject.h
+    audio/audioobject.h
     gui/simplegui.h
     gui/wiimoteview.h
     )
