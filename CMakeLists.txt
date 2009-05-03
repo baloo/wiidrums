@@ -1,14 +1,15 @@
 CMAKE_MINIMUM_REQUIRED(VERSION 2.4)
 
-PROJECT(WIIDRUM) 
+project(wiidrums)
 
 ## cmake includes and plugins
-SET(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake/modules")
+set(CMAKE_MODULE_PATH "${CMAKE_MODULE_PATH}"
+                      "${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules")
 
-FIND_PACKAGE(Qt4 REQUIRED)
+find_package(Qt4 REQUIRED)
 
 ## Just include the subdirs
-ADD_SUBDIRECTORY(src)
+add_subdirectory(src)
 
 
 
