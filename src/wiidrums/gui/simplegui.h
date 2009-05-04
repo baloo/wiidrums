@@ -21,7 +21,7 @@
 
 #include "wiimotemanager.h"
 #include "gui/wiimoteview.h"
-#include "audio/genericmediaobject.h"
+#include "audio/genericaudioobject.h"
 
 class SimpleGUI : public QWidget {
 
@@ -61,7 +61,7 @@ class SimpleGUI : public QWidget {
         //Concernant la gestion des Wiimotes
         WiimoteManager *manager;
 
-        GenericMediaObject *genericMediaObject;
+        GenericAudioObject *genericAudioObject;
 
 
         /**

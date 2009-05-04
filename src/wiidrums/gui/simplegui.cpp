@@ -5,14 +5,12 @@
 SimpleGUI::SimpleGUI() : QWidget() {
     //On crée le gestionnaire de Wiimotes
     manager = new WiimoteManager;
-    genericMediaObject = new GenericMediaObject;
-    genericMediaObject->setCurrentSource( Phonon::MediaSource("../../../res/test.wav") );
-    //genericMediaObject->setCurrentSource( Phonon::MediaSource("../../../res/hiTom.wav") );
+    genericAudioObject = new GenericAudioObject(Phonon::MusicCategory);
+    //genericAudioObject->setCurrentSource( Phonon::MediaSource("../../../res/test.wav") );
+    genericAudioObject->setCurrentSource( Phonon::MediaSource("../../../res/bruitblanc.wav") );
+    //genericAudioObject->setCurrentSource( Phonon::MediaSource("../../../res/hiTom.wav") );
     
-    Phonon::AudioOutput * audioOut = new Phonon::AudioOutput(Phonon::MusicCategory, this);
-    genericMediaObject->setAudioOutput(audioOut);
-
-    //Connexions avec le manager
+        //Connexions avec le manager
     connect(manager, SIGNAL(failedToConnect()), this, SLOT(failedToConnectMessage()));
     connect(manager, SIGNAL(wiimoteConnected(int, int)), this, SLOT(handleWiimoteConnected(int, int)));
 
@@ -65,6 +63,8 @@ SimpleGUI::~SimpleGUI(){
     delete quitAction;
     delete wiimoteConnexion;
     delete wiimoteDeconnexion;
+
+    delete genericAudioObject;
 }
 
 //Gestion de l'affichage des wiimotes
@@ -156,7 +156,7 @@ void SimpleGUI::creerMenus(){
     testSon->setShortcut(tr("Shift+S"));
     testSon->setStatusTip(QString::fromUtf8("Tester le son"));
     testSon->setEnabled(true);
-    connect(testSon, SIGNAL(triggered()), genericMediaObject, SLOT(play() ));
+    connect(testSon, SIGNAL(triggered()), genericAudioObject, SLOT(play() ));
 
     //On connecte le tout
     menuFichier->addAction(quitAction);
