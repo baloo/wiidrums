@@ -119,7 +119,8 @@ void SimpleGUI::launchWiimoteConnexion(){
     this->repaint();
     manager->connectWiimotes();
 
-    QtConcurrent::run(manager,&WiimoteManager::exec);
+    //Lancement de la boucle d'évènements
+    manager->exec();
 }
 
 //Méthode qui crée la barre de menus

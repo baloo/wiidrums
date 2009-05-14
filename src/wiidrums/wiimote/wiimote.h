@@ -4,10 +4,18 @@
 #ifndef DEF_WIIMOTE
 #define DEF_WIIMOTE
 
+#include <QObject>
 #include <wiiuse.h>
 
+/**
+ Classe Wiimote qui implémente une wiimote avec les informations de Wiiuse mais également les informations sur l'accéléromètre.
 
-class Wiimote 
+ @author David Bonnet - Arthur Gautier pour Wiidrum Team
+ @date 14/05/2009
+ @since 14/05/2009 15:34
+ @version 1.0
+ */
+class Wiimote : QObject
 {
   public:
     Wiimote(wiimote_t * wm);
