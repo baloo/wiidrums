@@ -26,7 +26,7 @@
 
 using namespace std;
 
-class Wiimotes : QObject
+class Wiimotes : public QObject
 {
   Q_OBJECT
 

@@ -9,12 +9,14 @@ WiimoteManager::WiimoteManager(){
     
     //On instancie notre gestionnaire de wiimotes
     wiimotes = new Wiimotes(MAX_WIIMOTES);
+    connect(wiimotes, SIGNAL(wiimoteEvent(int, int)), this, SLOT(handleEventSignals(int,int)));
+
 
     //Au démarrage on est en mode d'initialisation
     initMode = true;
 
     eventTimer = new QTimer(this);
-    connect(eventTimer, SIGNAL(timeout()), this, SLOT(timeOutHidenEvent()));
+    connect(eventTimer, SIGNAL(timeout()), this, SLOT(readWiimoteAccel()));
     timeInterval = 2000;
 }
 
@@ -22,15 +24,6 @@ WiimoteManager::WiimoteManager(){
 WiimoteManager::~WiimoteManager(){
 
     delete wiimotes;
-}
-
-//Slot qui gère les évènements cachés
-void WiimoteManager::timeOutHidenEvent(){
-/*
-    for(int i=0; i<MAX_WIIMOTES; i++){
-      handleWiimotesEvent(wiimotes[i]);
-    }
-*/  
 }
 
 //Méthode de connexion des wiimotes
@@ -63,6 +56,8 @@ bool WiimoteManager::connectWiimotes(int timeout){
 void WiimoteManager::disconnectWiimotes(){
     //On lance la déconnexion sur l'ensemble de wiimotes
     wiimotes->disconnectWiimotes();
+
+    eventTimer->stop();
 }
 
 //On active l'IR d'une wiimote
@@ -132,8 +127,6 @@ void WiimoteManager::exec(){
 
     //On lance la boucle d'évènements dans un thread séparé
     QtConcurrent::run(wiimotes,&Wiimotes::exec);
-
-    eventTimer->stop();
 }
 
 //Gestion des évènements envoyés par la boucle d'évènements
@@ -155,7 +148,7 @@ void WiimoteManager::handleEventSignals(int numWiimote, int event){
     }
 }
 
-void WiimoteManager::readWiimoteAccel(QTimerEvent *){
+void WiimoteManager::readWiimoteAccel(){
     for(int i=0; i<MAX_WIIMOTES; i++){
       handleWiimotesEvent(wiimotes->getWiiuseWiimotes()[i]);
     }

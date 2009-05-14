@@ -78,16 +78,16 @@ class WiimoteManager : public QObject {
       */
       void exec();
 
-    signals:
-      void timerEvent(QTimerEvent *e);
-
     protected slots:
       /**
         Slot qui gère les évènements envoyés par la boucle d'évènements
        */
       void handleEventSignals(int numWiimote, int event);
 
-      void readWiimoteAccel(QTimerEvent *e);
+      /**
+        Slot qui lance la lecture de l'accéléraomètre
+       */
+      void readWiimoteAccel();
 
     private:
 
@@ -112,11 +112,6 @@ class WiimoteManager : public QObject {
       * @param sensitivity La sensibilité de l'IR de la wiimote
       */
       void changeIRSensitivity(int numWiimote, int sensitivity);
-
-      /**
-      * Slot qui gère les évènements masqués
-      */
-      void timeOutHidenEvent();
 
     signals:
       /**

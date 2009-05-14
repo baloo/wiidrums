@@ -15,7 +15,7 @@
  @since 14/05/2009 15:34
  @version 1.0
  */
-class Wiimote : QObject
+class Wiimote : public QObject
 {
   public:
     Wiimote(wiimote_t * wm);
