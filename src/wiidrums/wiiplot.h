@@ -8,7 +8,14 @@
 
 const int PLOT_SIZE = 200; // 0 to 199
 
+/**
+  Classe WiiPlot qui représente un point sur le graphique
+  traçant l'activité de l'accéléromètre
 
+  @author Arthur Gautier - David Bonnet
+  @date 16/05/2009
+  @since 16/05/2009 16:53
+  */
 class WiiPlot : public QwtPlot
 {
     // On passe la classe wiimotemanager en amie, de facon à ce qu'elle puisse
@@ -38,7 +45,7 @@ class WiiPlot : public QwtPlot
 
     int d_interval; //timer in ms
     int d_timerId; 
-}
+};
 
 
 #endif WIIPLOT_H

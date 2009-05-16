@@ -109,9 +109,20 @@ void WiimoteManager::handleWiimotesEvent(wiimote *wm){
         //printf("wiimote pitch = %f [%f]\n", wm->orient.pitch, wm->orient.a_pitch);
         //printf("wiimote yaw   = %f\n", wm->orient.yaw);
 
-        qDebug() << "wiimote roll  = "<<  wm->orient.roll <<" [" << wm->orient.a_roll << "]" << endl;
-        qDebug() << "wiimote pitch = "<<  wm->orient.pitch <<" [" << wm->orient.a_pitch << "]" << endl;
-        qDebug() << "wiimote yaw   = "<<  wm->orient.yaw << endl;
+        qDebug() << "wiimote x  = "<<  wm->accel.x;
+        qDebug() << "wiimote y  = "<<  wm->accel.y;
+        qDebug() << "wiimote z  = "<<  wm->accel.z;
+        qDebug() << "wiimote roll  = "<<  wm->orient.roll <<" [" << wm->orient.a_roll << "]";
+        qDebug() << "wiimote pitch = "<<  wm->orient.pitch <<" [" << wm->orient.a_pitch << "]";
+        qDebug() << "wiimote yaw   = "<<  wm->orient.yaw << endl;       //yaw n'est pas implémenté sous wiuse. La valeur reste donc à 0
+
+        //Si le pitch est entre 30 et 60 alors la wiimote est en position vers le bas
+        //On lance alors l'émission du son
+        if(wm->orient.pitch > 30 && wm->orient.pitch < 60){
+            emit playSimpleSong();
+
+            qDebug() << "WiimoteManager>> PlaySimpleSong";
+        }
   }
 
 }

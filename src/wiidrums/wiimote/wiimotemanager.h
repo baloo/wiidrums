@@ -136,6 +136,11 @@ class WiimoteManager : public QObject {
       */
       void wiimoteIRSensitivityChange(int numWiimote, int sensitivity);
 
+      /**
+        Signal émis pour lancer le son (méthode de reconnaissance basique)
+        */
+      void playSimpleSong();
+
     private:
       Wiimotes *wiimotes;
       //Tableau contenant les objets Wiimote
