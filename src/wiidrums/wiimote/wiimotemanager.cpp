@@ -105,9 +105,13 @@ void WiimoteManager::handleWiimotesEvent(wiimote *wm){
 
   // Si l'accéléromètre est activé on affiche 
   if (WIIUSE_USING_ACC(wm)) {
-        printf("wiimote roll  = %f [%f]\n", wm->orient.roll, wm->orient.a_roll);
-        printf("wiimote pitch = %f [%f]\n", wm->orient.pitch, wm->orient.a_pitch);
-        printf("wiimote yaw   = %f\n", wm->orient.yaw);
+        //printf("wiimote roll  = %f [%f]\n", wm->orient.roll, wm->orient.a_roll);
+        //printf("wiimote pitch = %f [%f]\n", wm->orient.pitch, wm->orient.a_pitch);
+        //printf("wiimote yaw   = %f\n", wm->orient.yaw);
+
+        qDebug() << "wiimote roll  = "<<  wm->orient.roll <<" [" << wm->orient.a_roll << "]" << endl;
+        qDebug() << "wiimote pitch = "<<  wm->orient.pitch <<" [" << wm->orient.a_pitch << "]" << endl;
+        qDebug() << "wiimote yaw   = "<<  wm->orient.yaw << endl;
   }
 
 }
