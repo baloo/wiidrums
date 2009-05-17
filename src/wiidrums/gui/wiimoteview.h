@@ -6,8 +6,8 @@
  *
  * @author David Bonnet pour Polytech'WiiDrums Team
  * @date 30/04/2009 10:45
- * @since 30/04/2009 10:45
- * @version 0.0
+ * @since 16/05/2009 15:23
+ * @version 1.0
  */
 
 
@@ -18,6 +18,8 @@
 #include <QtCore>
 #include <QAbstractSlider>
 #include <wiimotemanager.h>
+
+//#include <wiiplot.h>
 
 class WiimoteView : public QWidget {
 
@@ -40,10 +42,10 @@ class WiimoteView : public QWidget {
       */
       void handleDisconnect(int numWm);
 
-      /*
-      * Slot qui se charge de l'activation de l'IR
-      *
-      void handleIRActivation();
+      /**
+      * Slot qui se charge de l'activation de l'accéléromètre
+      */
+      void handleAccelActivation();
 
       /*
       * Slot qui gère le changement de sensibilité de la wiimote
@@ -67,10 +69,14 @@ class WiimoteView : public QWidget {
       QHBoxLayout *statusLayout;
       QHBoxLayout *controlLayout;
 
+      //Widgets d'informations
+      //WiiPlot *graph;
+
       //Widgets de contrôle
+
+      QPushButton *accelButton;
+      bool accelEnable;
       /*
-      QPushButton *IRButton;
-      bool irEnable;
       bool alarmDelenched;
       QSlider *irSensitivitySlider;
       */

@@ -131,6 +131,29 @@ bool Wiimotes::changeIRSensitivity(int numWiimote, int sensitivity){
     return true;
 }
 
+//Déactiver l'accéléromètre
+bool Wiimotes::disableAccelWiimote(int numWiimote){
+
+    if(numWiimote <= this->wiimotes){
+      wiiuse_motion_sensing(this->wms[numWiimote], 0);
+      return true;
+    }
+
+    return false;
+}
+
+//Réactiver l'acéléromètre
+bool Wiimotes::enableAccelWiimote(int numWiimote){
+
+    if(numWiimote <= this->wiimotes){
+      wiiuse_motion_sensing(this->wms[numWiimote], 1);
+      wiiuse_set_orient_threshold(this->wms[numWiimote], 5);
+      return true;
+    }
+
+    return false;
+}
+
 int Wiimotes::poll()
 {
     return wiiuse_poll(this->wms, this->wiimotes);

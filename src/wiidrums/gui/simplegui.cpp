@@ -7,13 +7,13 @@ SimpleGUI::SimpleGUI() : QWidget() {
     manager = new WiimoteManager;
     genericAudioObject = new GenericAudioObject(Phonon::MusicCategory);
     //genericAudioObject->setCurrentSource( Phonon::MediaSource("../../../res/test.wav") );
-    genericAudioObject->setCurrentSource( Phonon::MediaSource("../../../res/bruitblanc.wav") );
-    //genericAudioObject->setCurrentSource( Phonon::MediaSource("../../../res/hiTom.wav") );
+    //genericAudioObject->setCurrentSource( Phonon::MediaSource("../../../res/bruitblanc.wav") );
+    genericAudioObject->setCurrentSource( Phonon::MediaSource("../../../res/hiTom.wav") );
     
         //Connexions avec le manager
     connect(manager, SIGNAL(failedToConnect()), this, SLOT(failedToConnectMessage()));
     connect(manager, SIGNAL(wiimoteConnected(int, int)), this, SLOT(handleWiimoteConnected(int, int)));
-
+    connect(manager, SIGNAL(playSimpleSong()), genericAudioObject, SLOT(play() ));
 
     //On crée les menus de la fenêtre
     this->creerMenus();

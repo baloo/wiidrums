@@ -89,22 +89,35 @@ class WiimoteManager : public QObject {
        */
       void readWiimoteAccel();
 
-    private:
-
     public slots:
       /**
       * Slot qui permet d'activer l'IR d'une wiimote
       *
-      * @param numWiimote - ATTENTION le numéro commence à 1
+      * @param numWiimote
       */
       bool enableIRWiimote(int numWiimote = 1);
 
       /**
-      * Slot qui permet d'activer l'IR d'une wiimote
+      * Slot qui permet de déactiver l'IR d'une wiimote
       *
-      * @param numWiimote - ATTENTION le numéro commence à 1
+      * @param numWiimote
       */
       bool disableIRWiimote(int numWiimote = 1);
+
+      /**
+      * Slot qui permet de déactiver l'accéléromètreR d'une wiimote
+      *
+      * @param numWiimote
+      */
+      bool disableAccelWiimote(int numWiimote = 1);
+
+      /**
+      * Slot qui permet d'activer l'accéléromètre d'une wiimote
+      *
+      * @param numWiimote
+      */
+      bool enableAccelWiimote(int numWiimote = 1);
+
 
       /**
       * Slot qui permet de changer la sensibilité d'une wiimote

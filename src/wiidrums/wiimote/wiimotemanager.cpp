@@ -78,6 +78,17 @@ void WiimoteManager::changeIRSensitivity(int numWiimote, int sensitivity){
         emit wiimoteIRSensitivityChange(numWiimote, sensitivity);
 }
 
+//Déactiver l'accéléromètre
+bool WiimoteManager::disableAccelWiimote(int numWiimote){
+
+    return wiimotes->disableAccelWiimote(numWiimote);
+}
+
+//Réactiver l'acéléromètre
+bool WiimoteManager::enableAccelWiimote(int numWiimote){
+
+    return wiimotes->enableAccelWiimote(numWiimote);
+}
 
 //On définit les LEDS en fonction de la position de la wiimote
 void WiimoteManager::setLedsByDefault(){

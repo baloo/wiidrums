@@ -97,6 +97,22 @@ class Wiimotes : public QObject
       Getter de la structure de wiimotes
      */
     wiimote_t** getWiiuseWiimotes();
+
+  public slots:
+
+      /**
+      * Slot qui permet de déactiver l'accéléromètre d'une wiimote
+      *
+      * @param numWiimote
+      */
+      bool disableAccelWiimote(int numWiimote = 1);
+
+      /**
+      * Slot qui permet d'activer l'accéléromètre d'une wiimote
+      *
+      * @param numWiimote
+      */
+      bool enableAccelWiimote(int numWiimote = 1);
   
   signals:
     
