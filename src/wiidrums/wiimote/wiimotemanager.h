@@ -64,14 +64,14 @@ class WiimoteManager : public QObject {
       *
       * @param wiimote La wiimote à prendre en charge
       */
-      void handleWiimotesEvent(wiimote *wm);
+      void handleWiimotesEvent(Wiimote * wm);
 
       /**
       * Méthode qui prend en charge la déconnexion des wiimotes
       *
       * @param wiimote La wiimote à prendre en charge
       */
-      void handleDisconnect(wiimote* wm);
+      void handleDisconnect(Wiimote* wm);
 
       /**
       * Méthode qui lance la boucle d'évènements sur les wiimotes

@@ -101,35 +101,35 @@ void WiimoteManager::noLedAnymore(){
 }
 
 //Prise en charge des évènements de la wiimote
-void WiimoteManager::handleWiimotesEvent(wiimote *wm){
+void WiimoteManager::handleWiimotesEvent(Wiimote *wm){
 
   // Le bouton - désactive les accéléromètres
-  if (IS_JUST_PRESSED(wm, WIIMOTE_BUTTON_MINUS)){
-    wiiuse_motion_sensing(wm, 0);
+  if (IS_JUST_PRESSED(wm->getStruct(), WIIMOTE_BUTTON_MINUS)){
+    wiiuse_motion_sensing(wm->getStruct(), 0);
   }
 
   // Le bouton + active les accéléromètres
-  if (IS_JUST_PRESSED(wm, WIIMOTE_BUTTON_PLUS)){
-    wiiuse_motion_sensing(wm, 1);
-    wiiuse_set_orient_threshold(wm, 5);
+  if (IS_JUST_PRESSED(wm->getStruct(), WIIMOTE_BUTTON_PLUS)){
+    wiiuse_motion_sensing(wm->getStruct(), 1);
+    wiiuse_set_orient_threshold(wm->getStruct(), 5);
   }
 
   // Si l'accéléromètre est activé on affiche 
-  if (WIIUSE_USING_ACC(wm)) {
+  if (WIIUSE_USING_ACC(wm->getStruct())) {
         //printf("wiimote roll  = %f [%f]\n", wm->orient.roll, wm->orient.a_roll);
         //printf("wiimote pitch = %f [%f]\n", wm->orient.pitch, wm->orient.a_pitch);
         //printf("wiimote yaw   = %f\n", wm->orient.yaw);
 
-        qDebug() << "wiimote x  = "<<  wm->accel.x;
-        qDebug() << "wiimote y  = "<<  wm->accel.y;
-        qDebug() << "wiimote z  = "<<  wm->accel.z;
-        qDebug() << "wiimote roll  = "<<  wm->orient.roll <<" [" << wm->orient.a_roll << "]";
-        qDebug() << "wiimote pitch = "<<  wm->orient.pitch <<" [" << wm->orient.a_pitch << "]";
-        qDebug() << "wiimote yaw   = "<<  wm->orient.yaw << endl;       //yaw n'est pas implémenté sous wiuse. La valeur reste donc à 0
+        qDebug() << "wiimote x  = "<<  wm->getAccel().x;
+        qDebug() << "wiimote y  = "<<  wm->getAccel().y;
+        qDebug() << "wiimote z  = "<<  wm->getAccel().z;
+        qDebug() << "wiimote roll  = "<<  wm->getOrient().roll <<" [" << wm->getOrient().a_roll << "]";
+        qDebug() << "wiimote pitch = "<<  wm->getOrient().pitch <<" [" << wm->getOrient().a_pitch << "]";
+        qDebug() << "wiimote yaw   = "<<  wm->getOrient().yaw << endl;       //yaw n'est pas implémenté sous wiuse. La valeur reste donc à 0
 
         //Si le pitch est entre 30 et 60 alors la wiimote est en position vers le bas
         //On lance alors l'émission du son
-        if(wm->orient.pitch > 30 && wm->orient.pitch < 60){
+        if(wm->getOrient().pitch > 30 && wm->getOrient().pitch < 60){
             emit playSimpleSong();
 
             qDebug() << "WiimoteManager>> PlaySimpleSong";
@@ -139,10 +139,11 @@ void WiimoteManager::handleWiimotesEvent(wiimote *wm){
 }
 
 //Prise en charge de la déconnexion des Wiimotes
-void WiimoteManager::handleDisconnect(wiimote* wm) {
-    qDebug() << "\n\n--- DISCONNECTED [wiimote id "<< wm->unid << "] ---\n";
+void WiimoteManager::handleDisconnect(Wiimote * wm) {
+    qDebug() << "\n\n--- DISCONNECTED [wiimote id "<< wm->getUnid() << "] ---\n";
 
-    emit wiimoteDisconnected((wm->unid)-1);
+    //emit wiimoteDisconnected((wm->unid)-1);
+    wm->disconnected();
     nbWiimoteConnected--;
 }
 
@@ -157,26 +158,38 @@ void WiimoteManager::exec(){
 
 //Gestion des évènements envoyés par la boucle d'évènements
 void WiimoteManager::handleEventSignals(int numWiimote, int event){
-    switch (event) {
-        case WIIUSE_EVENT:
-          this->handleWiimotesEvent(wiimotes->getWiiuseWiimotes()[numWiimote]);
-          break;
-        case WIIUSE_STATUS:
-          //gérer le status
-          break;
-        case WIIUSE_DISCONNECT:
-        case WIIUSE_UNEXPECTED_DISCONNECT:
-          //Gérer la déconnexion
-          handleDisconnect(wiimotes->getWiiuseWiimotes()[numWiimote]);
-          break;
-        default:
-          break;
+    try{
+        switch (event) {
+            case WIIUSE_EVENT:
+              this->handleWiimotesEvent(wiimotes->getWiimotes()->at(numWiimote));
+              break;
+            case WIIUSE_STATUS:
+              //gérer le status
+              break;
+            case WIIUSE_DISCONNECT:
+            case WIIUSE_UNEXPECTED_DISCONNECT:
+              //Gérer la déconnexion
+              handleDisconnect(wiimotes->getWiimotes()->at(numWiimote));
+              break;
+            default:
+              break;
+        }
+    }catch(...)
+    {
+            // On a essaye de recuperer une wiimote non initialisee
+
     }
+
 }
 
 void WiimoteManager::readWiimoteAccel(){
-    for(int i=0; i<MAX_WIIMOTES; i++){
-      handleWiimotesEvent(wiimotes->getWiiuseWiimotes()[i]);
+    for(int i=0; i<wiimotes->getWiimotes()->size(); i++){
+        try{
+            handleWiimotesEvent(wiimotes->getWiimotes()->at(i));
+        }catch(...)
+        {
+            // On a essaye de recuperer une wiimote non initialisee
+        }
     }
 }
 

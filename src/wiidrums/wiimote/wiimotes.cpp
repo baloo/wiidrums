@@ -162,7 +162,6 @@ int Wiimotes::poll()
 //lance la boucle d'événements et emet un signal lorsqu'un évènement à lieu
 void Wiimotes::exec(){
 
-    qDebug() << "Main event loop" << endl;
     qDebug() << nbWiimoteConnected << endl;
 
     //On active le motion tracking
@@ -174,11 +173,9 @@ void Wiimotes::exec(){
     //cout << "NbWiimotes : " << nbWiimoteConnected << endl;
       //Wiiuse_pool vérifie les évènements de chaque wiimote, si un évènement à eu lieu, alors la fonction est déclenchée
       if(wiiuse_poll(this->wms, this->wiimotes)) {
-          qDebug() << "Inside If" << endl;
 
           //Pour chaque wiimote
           for (int i=0; i < this->wiimotes; ++i) {
-            qDebug() << "Inside for : i = " << i << endl;
             emit wiimoteEvent(i, this->wms[i]->event);
             
           }
@@ -191,7 +188,3 @@ QVector<Wiimote *> * Wiimotes::getWiimotes()
     return this->wiimotesList;
 }
 
-wiimote_t** Wiimotes::getWiiuseWiimotes()
-{
-    return this->wms;
-}

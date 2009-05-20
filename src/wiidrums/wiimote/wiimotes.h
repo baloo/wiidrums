@@ -93,11 +93,6 @@ class Wiimotes : public QObject
      */
     QVector<Wiimote *> * getWiimotes();
 
-    /**
-      Getter de la structure de wiimotes
-     */
-    wiimote_t** getWiiuseWiimotes();
-
   public slots:
 
       /**

@@ -17,6 +17,9 @@
  */
 class Wiimote : public QObject
 {
+    Q_OBJECT
+
+
   public:
     Wiimote(wiimote_t * wm);
     ~Wiimote();
@@ -32,6 +35,8 @@ class Wiimote : public QObject
     int readData(byte* buffer, unsigned int offset, unsigned short len);
     void status();
 
+    int getUnid();
+
     void resync();
     int setFlags(int enable, int disable);
     int writeData(unsigned int addr, byte* data, byte len);
@@ -43,8 +48,17 @@ class Wiimote : public QObject
     void setAspectRatio(enum aspect_t aspect);
     void setIrSensitivity(int level);
 
+    wiimote_t * getStruct();
+    vec3b_t getAccel();
+    orient_t getOrient();
+
+
+  signals:
+    void disconnectedSignal();
+
   protected:
     wiimote_t * wm;
+
 };
 
 

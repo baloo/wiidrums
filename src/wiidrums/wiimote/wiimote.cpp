@@ -27,6 +27,7 @@ void Wiimote::setOrientThreshold(float threshold)
 void Wiimote::disconnected()
 {
     wiiuse_disconnected(this->wm);
+    emit this->disconnectedSignal();
 }
 
 void Wiimote::disconnect()
@@ -103,6 +104,22 @@ void Wiimote::setAspectRatio(enum aspect_t aspect)
 
 void Wiimote::setIrSensitivity(int level){
     wiiuse_set_ir_sensitivity(this->wm, level);
+}
+
+int Wiimote::getUnid(){
+    return wm->unid;
+}
+
+wiimote_t * Wiimote::getStruct(){
+    return wm;
+}
+
+vec3b_t Wiimote::getAccel(){
+    return wm->accel;
+}
+
+orient_t Wiimote::getOrient(){
+    return wm->orient;
 }
 
 

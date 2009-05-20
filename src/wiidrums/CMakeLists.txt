@@ -17,6 +17,7 @@ SET(WIIDRUMS_SRCS
     audio/genericaudioobject
     gui/simplegui
     gui/wiimoteview
+    misc/plotlist
     )
 
 SET(WIIDRUMS_HDRS
@@ -27,6 +28,7 @@ SET(WIIDRUMS_HDRS
     audio/audioobject.h
     gui/simplegui.h
     gui/wiimoteview.h
+    misc/plotlist.h
     )
 
 
