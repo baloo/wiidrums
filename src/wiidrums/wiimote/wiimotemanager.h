@@ -165,6 +165,9 @@ class WiimoteManager : public QObject {
       //Le mode init permet de placer les wiimotes
       bool initMode;
 
+      //Booleen qui indique si la Wiimote à déjà joué ou non
+      bool isAlreadyPlayed;
+
       /*Champs d'enregistrement des informations que la position des points IR des Wiimotes*/
 
       //Tableau contenant les structures de points IR selon le numéro de wiimote

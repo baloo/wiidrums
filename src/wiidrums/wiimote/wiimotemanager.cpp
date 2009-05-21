@@ -11,6 +11,7 @@ WiimoteManager::WiimoteManager(){
     wiimotes = new Wiimotes(MAX_WIIMOTES);
     connect(wiimotes, SIGNAL(wiimoteEvent(int, int)), this, SLOT(handleEventSignals(int,int)));
 
+    isAlreadyPlayed = false;
 
     //Au démarrage on est en mode d'initialisation
     initMode = true;
@@ -111,7 +112,7 @@ void WiimoteManager::handleWiimotesEvent(Wiimote *wm){
   // Le bouton + active les accéléromètres
   if (IS_JUST_PRESSED(wm->getStruct(), WIIMOTE_BUTTON_PLUS)){
     wiiuse_motion_sensing(wm->getStruct(), 1);
-    wiiuse_set_orient_threshold(wm->getStruct(), 5);
+    wiiuse_set_orient_threshold(wm->getStruct(), 2);
   }
 
   // Si l'accéléromètre est activé on affiche 
@@ -127,13 +128,19 @@ void WiimoteManager::handleWiimotesEvent(Wiimote *wm){
         qDebug() << "wiimote pitch = "<<  wm->getOrient().pitch <<" [" << wm->getOrient().a_pitch << "]";
         qDebug() << "wiimote yaw   = "<<  wm->getOrient().yaw << endl;       //yaw n'est pas implémenté sous wiuse. La valeur reste donc à 0
 
-        //Si le pitch est entre 30 et 60 alors la wiimote est en position vers le bas
+
+        //Si le pitch est entre 30 et 50 alors la wiimote est en position vers le bas
         //On lance alors l'émission du son
-        if(wm->getOrient().pitch > 30 && wm->getOrient().pitch < 60){
+        if(wm->getOrient().pitch > 30 && wm->getOrient().pitch < 50 && !isAlreadyPlayed){
             emit playSimpleSong();
+            isAlreadyPlayed = true;
 
             qDebug() << "WiimoteManager>> PlaySimpleSong";
-        }
+        } else
+            isAlreadyPlayed = false;
+
+        //L'idéal serait l'utilisation de la librairie AGR (Accelerometer Gesture Recogniser) mais cela demanderais plus de temps
+
   }
 
 }
